@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
     selector: 'app-home-page',
@@ -6,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    isEditable = false;
+  
+    constructor(private _formBuilder: FormBuilder) {}
+  
+    ngOnInit() {
+      this.firstFormGroup = this._formBuilder.group({
+        firstCtrl: ['', Validators.required]
+      });
+      this.secondFormGroup = this._formBuilder.group({
+        secondCtrl: ['', Validators.required]
+      });
+    }
 }

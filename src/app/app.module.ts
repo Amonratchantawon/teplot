@@ -7,7 +7,6 @@ import { NavModule } from './core/components/nav/nav.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/services/http/interceptor.service';
-import { OrderComponent } from './pages/order/order.component';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,4 +26,4 @@ import { OrderComponent } from './pages/order/order.component';
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

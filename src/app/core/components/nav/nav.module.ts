@@ -11,7 +11,7 @@ import { LogoModule } from '../logo/logo.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavMenuItemComponent } from './nav-menu-item/nav-menu-item.component';
 import { NavToolbarComponent } from './nav-toolbar/nav-toolbar.component';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule, MatStepperModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 
 @NgModule({
     declarations: [NavComponent, NavMenuItemComponent, NavToolbarComponent],
@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material';
         MatIconModule,
         MatButtonModule,
         MatExpansionModule,
+        MatStepperModule,
     ],
 })
 export class NavModule {}
