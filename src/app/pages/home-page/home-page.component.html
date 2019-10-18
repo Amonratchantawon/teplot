@@ -1,4 +1,3 @@
-
 <mat-card>
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -24,11 +23,68 @@
           <mat-form-field>
             <input matInput placeholder="Address" formControlName="secondCtrl" required>
           </mat-form-field>
+          <!-- <mat-form-field class="example-full-width">
+              <input matInput [matDatepicker]="secondCtrl"  placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="secondCtrl"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field> -->
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext (click)="getFromNextStep()">Next</button>
           </div>
         </form>
+      </mat-step>
+      <mat-step [stepControl]="myForm">
+        <ng-template matStepLabel>Lottery Number</ng-template>
+        <button mat-button color="accent" mat-raised-button (click)="addNewCompany()">ADD</button>
+        <form [formGroup]="myForm">
+          <div formArrayName="companies">
+            <div *ngFor="let comp of myForm.get('companies').controls; let i=index">
+              <!-- <fieldset> -->
+              <legend>
+                <h3>COMPANY {{i+1}}: </h3>
+              </legend>
+              <div [formGroupName]="i">
+                <!-- <label>เลข : </label> -->
+                <!-- <input formControlName="company" /> -->
+                <span>
+                  <mat-form-field>
+                    <input matInput placeholder="เลข" formControlName="company" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="บน" formControlName="company2" required>
+                  </mat-form-field>
+                  <label> X </label>
+                  <mat-form-field>
+                    <input matInput placeholder="ล่าง" formControlName="company3" required>
+                  </mat-form-field>
+                  <button mat-button  color="warn" (click)="deleteCompany(i)">Delete</button>
+                </span>
+                <!-- <div formArrayName="projects">
+                    <div *ngFor="let project of comp.get('projects').controls; let j=index">
+                      <fieldset>
+                        <legend>
+                          <h4>PROJECT {{j+1}}</h4>
+                        </legend>
+                        <div [formGroupName]="j">
+                          <label>เลข:</label>
+                          <input formControlName="projectName" /><span>
+                            <button (click)="deleteProject(comp.controls.projects, j)">Delete Project</button></span>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <button (click)="addNewProject(comp.controls.projects)">Add new Project</button>
+                  </div> -->
+              </div>
+
+            </div>
+          </div><br>
+        </form>
+        <pre>{{myForm.value | json}}</pre>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
