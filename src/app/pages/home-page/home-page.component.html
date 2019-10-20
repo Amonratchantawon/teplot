@@ -20,14 +20,14 @@
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Fill out your address</ng-template>
-          <mat-form-field>
+          <!-- <mat-form-field>
             <input matInput placeholder="Address" formControlName="secondCtrl" required>
+          </mat-form-field> -->
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="secondCtrl" formControlName="secondCtrl" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="secondCtrl"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #secondCtrl></mat-datepicker>
           </mat-form-field>
-          <!-- <mat-form-field class="example-full-width">
-              <input matInput [matDatepicker]="secondCtrl"  placeholder="Choose a date">
-              <mat-datepicker-toggle matSuffix [for]="secondCtrl"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker></mat-datepicker>
-            </mat-form-field> -->
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext (click)="getFromNextStep()">Next</button>
@@ -58,7 +58,7 @@
                   <mat-form-field>
                     <input matInput placeholder="ล่าง" formControlName="company3" required>
                   </mat-form-field>
-                  <button mat-button  color="warn" (click)="deleteCompany(i)">Delete</button>
+                  <button mat-button color="warn" (click)="deleteCompany(i)">Delete</button>
                 </span>
                 <!-- <div formArrayName="projects">
                     <div *ngFor="let project of comp.get('projects').controls; let j=index">

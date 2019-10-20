@@ -43,12 +43,10 @@ export class HomePageComponent implements OnInit {
   }
 
   getFromNextStep() {
-    console.log('object')
     this.formNextStep = {
       name: this.firstFormGroup.get("firstCtrl").value,
       date: this.secondFormGroup.get("secondCtrl").value
     }
-    console.log(this.formNextStep)
   }
 
   addNewCompany() {
@@ -58,7 +56,6 @@ export class HomePageComponent implements OnInit {
         company: [''],
         company2: [''],
         company3: [''],
-        projects: this._formBuilder.array([])
       })
     )
   }
@@ -75,18 +72,17 @@ export class HomePageComponent implements OnInit {
         company: x.company,
         company2: x.company2,
         company3: x.company3,
-        projects: this.setProjects(x)
       }))
     })
   }
 
-  setProjects(x) {
-    let arr = new FormArray([])
-    x.projects.forEach(y => {
-      arr.push(this._formBuilder.group({
-        projectName: y.projectName
-      }))
-    })
-    return arr;
-  }
+  // setProjects(x) {
+  //   let arr = new FormArray([])
+  //   x.projects.forEach(y => {
+  //     arr.push(this._formBuilder.group({
+  //       projectName: y.projectName
+  //     }))
+  //   })
+  //   return arr;
+  // }
 }

@@ -5,11 +5,13 @@ import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatDatepicker, MatToolbarModule, MatIconModule, MatCardModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatOptionModule, MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatSidenavModule, MatInputModule, MatStepperModule, MatButtonModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatFormField } from '@angular/material/form-field';
 import { CdkStepperModule } from '@angular/cdk/stepper';
+
 @NgModule({
     declarations: [HomePageComponent],
-    imports: [CommonModule,
+    imports: [
+        CommonModule,
         HomePageRoutingModule,
         ReactiveFormsModule,
         FormsModule,
@@ -20,7 +22,10 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
         MatButtonModule,
         MatCardModule,
         // MatDatepickerModule,
-        // MatDatepicker
+        // MatDatepicker,
+        // MaterialModule,            // <----- this module will be deprecated in the future version.
+        MatDatepickerModule,        // <----- import(must)
+        MatNativeDateModule,        // <----- import for date formating(optional)
     ],
 })
 export class HomePageModule {
