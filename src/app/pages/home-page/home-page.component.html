@@ -9,7 +9,8 @@
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Fill out your name</ng-template>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>กรุณาใส่ชื่อ</mat-label>
             <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
           </mat-form-field>
           <div>
@@ -20,10 +21,8 @@
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Fill out your address</ng-template>
-          <!-- <mat-form-field>
-            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-          </mat-form-field> -->
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>กรุณาใส่วันที่</mat-label>
             <input matInput [matDatepicker]="secondCtrl" formControlName="secondCtrl" placeholder="Choose a date">
             <mat-datepicker-toggle matSuffix [for]="secondCtrl"></mat-datepicker-toggle>
             <mat-datepicker touchUi #secondCtrl></mat-datepicker>
@@ -40,55 +39,52 @@
         <form [formGroup]="myForm">
           <div formArrayName="companies">
             <div *ngFor="let comp of myForm.get('companies').controls; let i=index">
-              <!-- <fieldset> -->
               <legend>
-                <h3>COMPANY {{i+1}}: </h3>
+                <h3>ชุดที่ {{i+1}}: </h3>
               </legend>
               <div [formGroupName]="i">
-                <!-- <label>เลข : </label> -->
-                <!-- <input formControlName="company" /> -->
                 <span>
-                  <mat-form-field>
-                    <input matInput placeholder="เลข" formControlName="company" required>
+                  <!-- <mat-form-field>
+                    <input matInput placeholder="เลข" formControlName="number" required>
+                  </mat-form-field> -->
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>ใส่ตัวเลข หวย</mat-label>
+                    <input matInput placeholder="เลข" formControlName="number" required>
                   </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="บน" formControlName="company2" required>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>กรุณาใส่ราคา บน</mat-label>
+                    <input matInput placeholder="บน" formControlName="priceTop" required>
                   </mat-form-field>
-                  <label> X </label>
-                  <mat-form-field>
-                    <input matInput placeholder="ล่าง" formControlName="company3" required>
+                  <mat-label> X </mat-label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>กรุณาใส่ราคา ล่าง</mat-label>
+                    <input matInput placeholder="ล่าง" formControlName="priceButton" required>
                   </mat-form-field>
                   <button mat-button color="warn" (click)="deleteCompany(i)">Delete</button>
                 </span>
-                <!-- <div formArrayName="projects">
-                    <div *ngFor="let project of comp.get('projects').controls; let j=index">
-                      <fieldset>
-                        <legend>
-                          <h4>PROJECT {{j+1}}</h4>
-                        </legend>
-                        <div [formGroupName]="j">
-                          <label>เลข:</label>
-                          <input formControlName="projectName" /><span>
-                            <button (click)="deleteProject(comp.controls.projects, j)">Delete Project</button></span>
-                        </div>
-                      </fieldset>
-                    </div>
-                    <button (click)="addNewProject(comp.controls.projects)">Add new Project</button>
-                  </div> -->
               </div>
 
             </div>
           </div><br>
         </form>
-        <pre>{{myForm.value | json}}</pre>
+        <!-- <pre>{{myForm.value | json}}</pre> -->
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext (click)="buildData()">Next</button>
         </div>
       </mat-step>
       <mat-step>
+
         <ng-template matStepLabel>Done</ng-template>
         You are now done.
+        <mat-grid-list cols="2" rowHeight="4:1">
+            <mat-grid-tile>
+                <mat-label> {{buildDataPost?.name}} </mat-label>
+            </mat-grid-tile>
+            <mat-grid-tile>2</mat-grid-tile>
+          </mat-grid-list>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button (click)="stepper.reset()">Reset</button>

@@ -7,8 +7,6 @@ import { NavModule } from './core/components/nav/nav.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/services/http/interceptor.service';
-// import { MatFormFieldModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,7 +16,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         AppRoutingModule,
         NavModule,
         HttpClientModule,
-        MatFormFieldModule
     ],
     providers: [
         {

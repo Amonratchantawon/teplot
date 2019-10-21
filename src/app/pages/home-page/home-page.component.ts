@@ -14,13 +14,14 @@ export class HomePageComponent implements OnInit {
   numberFormGroups: FormArray;
   isEditable = false;
   myForm: FormGroup;
+  buildDataPost
 
   data = {
     companies: [
       {
-        company: "example comany",
-        company2: "example comany",
-        company3: "example comany",
+        number: "example comany",
+        priceTop: "example comany",
+        priceButton: "example comany",
       }
     ]
   }
@@ -53,9 +54,9 @@ export class HomePageComponent implements OnInit {
     let control = <FormArray>this.myForm.controls.companies;
     control.push(
       this._formBuilder.group({
-        company: [''],
-        company2: [''],
-        company3: [''],
+        number: [''],
+        priceTop: [''],
+        priceButton: [''],
       })
     )
   }
@@ -69,20 +70,19 @@ export class HomePageComponent implements OnInit {
     let control = <FormArray>this.myForm.controls.companies;
     this.data.companies.forEach(x => {
       control.push(this._formBuilder.group({
-        company: x.company,
-        company2: x.company2,
-        company3: x.company3,
+        company: x.number,
+        company2: x.priceTop,
+        company3: x.priceButton,
       }))
     })
   }
 
-  // setProjects(x) {
-  //   let arr = new FormArray([])
-  //   x.projects.forEach(y => {
-  //     arr.push(this._formBuilder.group({
-  //       projectName: y.projectName
-  //     }))
-  //   })
-  //   return arr;
-  // }
+  buildData(){
+    this.buildDataPost = {
+      date: this.secondFormGroup.get("secondCtrl").value,
+      name: this.firstFormGroup.get("firstCtrl").value,
+      items: this.myForm.get("companies").value,
+    }
+    console.log(this.buildDataPost)
+  }
 }
