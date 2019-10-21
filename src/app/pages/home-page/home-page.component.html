@@ -10,7 +10,7 @@
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Fill out your name</ng-template>
           <mat-form-field appearance="outline">
-              <mat-label>กรุณาใส่ชื่อ</mat-label>
+            <mat-label>กรุณาใส่ชื่อ</mat-label>
             <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
           </mat-form-field>
           <div>
@@ -22,7 +22,7 @@
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Fill out your address</ng-template>
           <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>กรุณาใส่วันที่</mat-label>
+            <mat-label>กรุณาใส่วันที่</mat-label>
             <input matInput [matDatepicker]="secondCtrl" formControlName="secondCtrl" placeholder="Choose a date">
             <mat-datepicker-toggle matSuffix [for]="secondCtrl"></mat-datepicker-toggle>
             <mat-datepicker touchUi #secondCtrl></mat-datepicker>
@@ -78,13 +78,35 @@
       <mat-step>
 
         <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <mat-grid-list cols="2" rowHeight="4:1">
-            <mat-grid-tile>
-                <mat-label> {{buildDataPost?.name}} </mat-label>
-            </mat-grid-tile>
-            <mat-grid-tile>2</mat-grid-tile>
-          </mat-grid-list>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <form>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">ชื่อ :</label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                      value="{{buildDataPost?.name}}">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-sm">
+              <form>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">ชื่อ: </label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                      value="{{buildDataPost?.name}}">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-sm">
+              
+            </div>
+          </div>
+        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button (click)="stepper.reset()">Reset</button>
